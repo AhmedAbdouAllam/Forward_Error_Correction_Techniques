@@ -176,7 +176,7 @@ Channel_Select=get(handles.ChannelSelect,'value')-1;
 FEC_Select=get(handles.CorrectionSelect,'value')-1;
 [SNRe,BER] = MainSimulator(SNR_To,SNR_From,Channel_Select,FEC_Select,Fair,No_Of_Bits);
 axes(handles.Plotter);
-semilogy(SNRe,BER,'b');
+semilogy(SNRe,BER);
 title(handles.Plotter,['BPSK Perfomance graph with ',num2str(No_Of_Bits),' bits']);
 
 xlabel(handles.Plotter,'SNR(dB)')
