@@ -5,7 +5,8 @@
 function [BER] = Realization(SNR,ChannelSelect,FECSelect,Fair,No_of_sent_bits)
 
 InputBits=round(rand(1,No_of_sent_bits));
-if FECSelect==0
+
+if FECSelect==0 || ChannelSelect==0
     EncodedBits=InputBits;
     SNRx=SNR;
 elseif FECSelect==1
@@ -33,12 +34,11 @@ elseif FECSelect==3
         SNRx=SNR;
     end
 end
-X=HammingDecoderElevenByFiften(EncodedBits);
-Y=ErrorCaluculation(InputBits,X);
+
 SentMessege=Modulator(EncodedBits);
 RecievedMessege=ChannelEffect(SentMessege,ChannelSelect,SNRx);
 ReceivedStream=DeModulator(RecievedMessege);
-if FECSelect==0
+if FECSelect==0||ChannelSelect==0
     RevievedBits=ReceivedStream;
 elseif FECSelect==1
     RevievedBits=decoderReptitionThree(ReceivedStream);
