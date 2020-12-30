@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 29-Dec-2020 21:44:53
+% Last Modified by GUIDE v2.5 30-Dec-2020 00:11:13
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -181,6 +181,7 @@ title(handles.Plotter,['BPSK Perfomance graph with ',num2str(No_Of_Bits),' bits'
 
 xlabel(handles.Plotter,'SNR(dB)')
 ylabel(handles.Plotter,'Log(BER')
+hold on;
 
 
 
@@ -273,3 +274,12 @@ function Plotter_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: place code in OpeningFcn to populate Plotter
+
+
+% --- Executes on button press in ResetPlot.
+function ResetPlot_Callback(hObject, eventdata, handles)
+% hObject    handle to ResetPlot (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+axes(handles.Plotter); 
+cla reset; 
